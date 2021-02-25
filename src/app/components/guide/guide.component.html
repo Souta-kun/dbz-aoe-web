@@ -1,0 +1,23 @@
+<div class="container">
+    <h3>Estrategias</h3>
+    <p class="text-muted">Crece junto con nosotros en el clan Dbz. Aprende estrategias solidas de buenos jugadores como como St4rk.</p>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mb-3" *ngFor="let guide of guides">
+            <div class="card">
+                <iframe 
+                    class="e2e-iframe-trusted-src"
+                        [src]="guide.secureUrl" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">{{ guide.title }}</h5>
+                <p class="card-text">{{ guide.description }}</p>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
