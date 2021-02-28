@@ -1,19 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GuideModel } from 'src/app/models/guide.model';
 import { GuideService } from 'src/app/services/guide.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-guide',
   templateUrl: './guide.component.html',
   styleUrls: ['./guide.component.css']
 })
-export class GuideComponent implements OnInit {
-  guides = [];
+export class GuideComponent implements OnInit, OnDestroy {
+  guides: GuideModel[] = [];
+  sub:Subscription;
 
-  constructor(private guideService: GuideService) { }
+  constructor(private dataStorageService: DataStorageService,
+              private guideService: GuideService) { }
 
   ngOnInit(): void {
-    this.guides = this.guideService.getGuides();
+    this.sub = this.dataStorageService.guides.subscribe(data => { 
+      this.guides = data;
+    })
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

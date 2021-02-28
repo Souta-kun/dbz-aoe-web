@@ -1,35 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+
 import { DownloadModel } from '../models/download.model';
-import { DataStorageService } from '../shared/data-storage.service';
+
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DownloadService {
+  download: DownloadModel[] = [];
+  downloadChanged = new Subject<DownloadModel[]>();
 
-  constructor(private http: HttpClient,
-              private dataStorageService: DataStorageService) { }
-
-  getDownloads() {
-    return this.dataStorageService.downloads.slice();
+  get(download: DownloadModel) {
+    this.download.push(download);
+    this.downloadChanged.next(this.download);
   }
 
-  getDownload() {
-
+  set(downloads: DownloadModel[]) {
+    this.download = downloads;
+    this.downloadChanged.next(this.download);
   }
 
-  postDownload() {
-    const body = new DownloadModel('WololoKindowns 5.8.1', 'url');
-    this.http
-      .post(
-        environment.dbConection,
-        body
-      )
-      .subscribe(result => {
-        console.log(result);
-      });
+  add(download: DownloadModel) {
+    this.download.push(download);
+    this.downloadChanged.next(this.download);
+  }
 
+  update(download: DownloadModel, index: number) {
+    this.download[index] = download;
+    this.downloadChanged.next(this.download);
+  }
+
+  remove(index: number) {
+    this.download.splice(index, 1);
+    this.downloadChanged.next(this.download);
   }
 }

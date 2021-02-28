@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  dbConection: 'https://dbz-aoe-default-rtdb.firebaseio.com/downloads.json'
+  dbConection: 'https://dbz-aoe-default-rtdb.firebaseio.com/'
 };
 
 /*

@@ -9,6 +9,6 @@ export class GuideService {
   constructor(private dataStorageService: DataStorageService) { }
 
   getGuides() {
-    return this.dataStorageService.guides.slice();
+    
   }
 }

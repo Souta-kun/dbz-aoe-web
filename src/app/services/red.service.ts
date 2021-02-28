@@ -6,7 +6,7 @@ export class RedService {
 
     constructor(private dataStorageService: DataStorageService) {}
     
-    getRedes() {
-        return this.dataStorageService.redes.slice();
+    getRed() {
+        
     }
 }
