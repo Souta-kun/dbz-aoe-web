@@ -16,18 +16,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/home">Inicio</a>
+          <a class="nav-link" routerLink="/home/news">Inicio</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/guide">Estrategias</a>
+          <a class="nav-link" routerLink="/home/guide">Estrategias</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/download">Descargas</a>
+          <a class="nav-link" routerLink="/home/download">Descargas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="logged">
+          <a class="nav-link" routerLink="/admon">Administración</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" *ngIf="false">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-danger my-2 my-sm-0" (click)="onLogout()" type="button" *ngIf="logged">Cerrar Sesion</button>
+        <button class="btn btn-outline-danger my-2 my-sm-0" (click)="onRedirect()" type="submit" *ngIf="!logged">Iniciar Sesion</button>
       </form>
     </div>
   </nav>

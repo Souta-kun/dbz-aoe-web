@@ -1,0 +1,53 @@
+<h3>Gestión de Estragetias</h3>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <form class="form" [formGroup]="form" (ngSubmit)="onSave()">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input formControlName="title" type="text" maxlength="150" placeholder="Nombre" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input formControlName="url" type="url" placeholder="https://www.youtube.com/embed/CODIGO_DEL_VIDEO" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <textarea rows="5" formControlName="description" placeholder="Descripción" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div>
+                        <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid"><strong>{{ isEdit ? 'Actualizar' : 'Crear' }}</strong></button>
+                        <button type="button" (click)="onDelete()" class="btn btn-outline-danger ml-1" *ngIf="isEdit"><strong>Eliminar</strong></button>
+                        <button type="button" (click)="onReset()" class="btn btn-primary ml-1"><strong>Limpiar</strong></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                (click)="onShow(guide, i)"
+                *ngFor="let guide of guides; let i = index">
+                <td><p class="text-break">{{ guide.title }}</p></td>
+                <td><p class="text-break">{{ guide.description | slice:0:35 }}</p></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

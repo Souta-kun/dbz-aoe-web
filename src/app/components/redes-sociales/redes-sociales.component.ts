@@ -17,13 +17,11 @@ export class RedesSocialesComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   constructor(private redService: RedService,
-              private dataStorageService: DataStorageService,
-              private router: Router) { }
+              private router: Router) {
+    this.redes = this.redService.redes; 
+  }
 
   ngOnInit(): void {
-    this.sub = this.dataStorageService.redes.subscribe(data => {
-      this.redes = data;
-    });
   }
   
   onRedirect(url: string) {
@@ -31,6 +29,6 @@ export class RedesSocialesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    
   }
 }

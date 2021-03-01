@@ -13,13 +13,14 @@ export class DownloadComponent implements OnInit, OnDestroy {
   downloads: DownloadModel[] = [];
   sub: Subscription;
 
-  constructor(private downloadService: DownloadService) { }
+  constructor(private downloadService: DownloadService,
+              private dataStorageService: DataStorageService) { }
 
-  ngOnInit(): void { 
-    //this.downloadService();
+  ngOnInit(): void {
     this.sub = this.downloadService.downloadChanged.subscribe(data => {
-      this.downloads = data;
+      this.downloads = data; 
     });
+    this.dataStorageService.getDownload();
   }
   
   onRedirect(url: string) {
