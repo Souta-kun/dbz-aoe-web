@@ -14,9 +14,6 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth-guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home/news', pathMatch: 'full' },
-  { path: 'auth', component: AuthComponent },
-  { path: 'home', redirectTo: 'home/news', pathMatch: 'full' },
   { 
     path: 'home', 
     component: HomeComponent, 
@@ -37,7 +34,8 @@ const routes: Routes = [
       { path: 'download', component: DownloadManageComponent }
     ] 
   },
-  { path: '**', redirectTo: 'home/news', pathMatch: 'full' }
+  { path: 'auth', component: AuthComponent },
+  { path: '**', redirectTo: '/home/news', pathMatch: 'full' }
 ];
 
 @NgModule({
