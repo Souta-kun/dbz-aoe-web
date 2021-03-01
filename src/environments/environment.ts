@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiDatabase: 'https://dbz-aoe-default-rtdb.firebaseio.com/',
-  apiAuthentication: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_1Meyvyz8U5wxay8a2z2-H30_G1XHHyo'
+  apiDatabase: 'https://dbz-aoe-web-default-rtdb.firebaseio.com/',
+  apiAuthentication: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCSSJOhAa8JHrAL9pcP7EIVG03az_sN_38'
 };
 
 /*
