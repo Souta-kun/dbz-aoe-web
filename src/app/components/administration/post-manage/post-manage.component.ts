@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class PostManageComponent implements OnInit, OnDestroy {
   isEdit = false;
   currentIndex: number;  
+  currentPost: PostModel;
   posts: PostModel[] = [];
   form: FormGroup;
   sub: Subscription;
@@ -59,7 +60,7 @@ export class PostManageComponent implements OnInit, OnDestroy {
       new PostModel(
         this.form.controls["title"].value,
         this.form.controls["message"].value,
-        Date.now(),
+        this.currentPost.publicated,
         this.form.controls["urlImage"].value
       ), 
       this.currentIndex
@@ -108,11 +109,13 @@ export class PostManageComponent implements OnInit, OnDestroy {
     this.form.reset();
     this.isEdit = false;
     this.currentIndex = null;    
+    this.currentPost = null;
   }
 
   onShow(post: PostModel, index: number) {
     this.currentIndex = index;
     this.isEdit = true;
+    this.currentPost = post;
     this.form.patchValue({
       title: post.title,
       message: post.message,
