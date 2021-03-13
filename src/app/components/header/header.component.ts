@@ -28,6 +28,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLogout() {
     this.authService.logout();
   }
+  
+  onImg() {
+    this.router.navigate(['/home/news']);
+  }
 
   ngOnDestroy(){
     this.sub.unsubscribe();

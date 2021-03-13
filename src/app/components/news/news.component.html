@@ -6,7 +6,7 @@
     <div class="col-sm-8">  
       <h3>Noticias</h3>
       <hr>
-      <div class="card mb-3" *ngFor="let post of posts | orderBy: 'publicated'">
+      <div class="card mb-3" *ngFor="let post of posts | orderBy: 'publicated' : true">
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.message }}</p>
