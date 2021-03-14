@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <app-redes-sociales></app-redes-sociales>
     </div>
-    <div class="col-sm-8">  
+    <div class="col-sm-9">  
       <h3>Noticias</h3>
       <hr>
       <div class="card mb-3" *ngFor="let post of posts | orderBy: 'publicated' : true">
@@ -12,7 +12,7 @@
           <p class="card-text">{{ post.message }}</p>
           <p class="card-text"><small class="text-muted">Publicado {{ post.publicated | date }}</small></p>
         </div>
-        <img [src]="post.urlImage" class="card-img-bottom" alt="...">
+        <img [src]="post.urlImage" class="card-img-bottom" alt="..." *ngIf="post.urlImage">
       </div>
     </div>
   </div>

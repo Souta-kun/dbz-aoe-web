@@ -24,7 +24,7 @@ export class PostManageComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required, Validators.maxLength(150)]),
       message: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
-      urlImage: new FormControl(null, [Validators.required, Validators.maxLength(500)])
+      urlImage: new FormControl(null, [Validators.maxLength(500)])
     });
   }
 

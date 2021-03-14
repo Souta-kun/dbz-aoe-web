@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs';
 })
 export class RedesSocialesComponent implements OnInit, OnDestroy {
   redes: RedesModel[] = [];
-  sub: Subscription;
 
   constructor(private redService: RedService,
               private router: Router) {
