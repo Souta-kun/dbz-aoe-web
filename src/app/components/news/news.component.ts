@@ -8,13 +8,12 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  templateUrl: './news.component.html'
 })
 export class NewsComponent implements OnInit, OnDestroy {
   sub: Subscription;
   posts: PostModel[] = [];
-  
+
   constructor(private postService: PostService,
               private dsService: DataStorageService) { }
 

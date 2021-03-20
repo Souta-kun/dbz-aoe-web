@@ -1,16 +1,13 @@
 <div class="container">
-    <h3>Utilidades</h3>
+    <app-title [title]="'Utilidades'"></app-title>
     <p class="text-muted">Descarga aqui el juego, mods y parches.</p>
-</div>
-<hr>
-<div class="container">
     <div class="list-group">
-        <button 
-            type="button" 
-            class="list-group-item list-group-item-action" 
-            data-toggle="tooltip" 
-            data-placement="top" 
-            title="Descargar" 
+        <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Descargar"
             (click)="onRedirect(download.url)"
             *ngFor="let download of downloads">
             {{ download.name }}

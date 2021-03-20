@@ -6,8 +6,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-download',
-  templateUrl: './download.component.html',
-  styleUrls: ['./download.component.css']
+  templateUrl: './download.component.html'
 })
 export class DownloadComponent implements OnInit, OnDestroy {
   downloads: DownloadModel[] = [];
@@ -18,11 +17,11 @@ export class DownloadComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.downloadService.downloadChanged.subscribe(data => {
-      this.downloads = data; 
+      this.downloads = data;
     });
     this.dataStorageService.getDownload();
   }
-  
+
   onRedirect(url: string) {
     window.open(url, '_blank');
   }

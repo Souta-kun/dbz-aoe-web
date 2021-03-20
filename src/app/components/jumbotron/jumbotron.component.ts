@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-jumbotron',
-  templateUrl: './jumbotron.component.html',
-  styleUrls: ['./jumbotron.component.css']
+  templateUrl: './jumbotron.component.html'
 })
 export class JumbotronComponent implements OnInit {
 
@@ -13,5 +12,5 @@ export class JumbotronComponent implements OnInit {
   }
 /*
   https://miro.medium.com/max/2400/1*5o1TMtf7LHauaRrUNdNz8g.jpeg
-*/  
+*/
 }

@@ -7,8 +7,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-guide',
-  templateUrl: './guide.component.html',
-  styleUrls: ['./guide.component.css']
+  templateUrl: './guide.component.html'
 })
 export class GuideComponent implements OnInit, OnDestroy {
   guides: GuideModel[] = [];
@@ -19,7 +18,7 @@ export class GuideComponent implements OnInit, OnDestroy {
               private guideService: GuideService) { }
 
   ngOnInit(): void {
-    this.sub = this.guideService.guideChanged.subscribe(data => { 
+    this.sub = this.guideService.guideChanged.subscribe(data => {
       this.guides = data;
     });
     this.dsService.getGuide();
