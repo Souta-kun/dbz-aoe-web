@@ -1,0 +1,124 @@
+{
+  "configVersion": 1,
+  "timestamp": 1633814333880,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/4.7d7b76c9f2621b64c62e.js",
+        "/5.9a6191f1e642140a2f52.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.91d3f73ff556fffe7d79.js",
+        "/manifest.webmanifest",
+        "/polyfills.94daefd414b8355106ab.js",
+        "/runtime.6db86d9e05ebd4dc1d3d.js",
+        "/scripts.53f75ab19ed1f427752e.js",
+        "/styles.6395b4fdd88fe6661137.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/InitialData.json",
+        "/assets/images/aoe_background.jpg",
+        "/assets/images/dbz_logo.png",
+        "/assets/images/goku_jumbotrom.jpg",
+        "/assets/images/voobly_logo.jfif"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "downloads",
+      "patterns": [
+        "https:\\/\\/dbz-aoe-web-default-rtdb\\.firebaseio\\.com\\/downloads\\.json"
+      ],
+      "strategy": "freshness",
+      "maxSize": 5,
+      "maxAge": 43200000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    },
+    {
+      "name": "guides",
+      "patterns": [
+        "https:\\/\\/dbz-aoe-web-default-rtdb\\.firebaseio\\.com\\/guides\\.json"
+      ],
+      "strategy": "freshness",
+      "maxSize": 5,
+      "maxAge": 43200000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    },
+    {
+      "name": "posts",
+      "patterns": [
+        "https:\\/\\/dbz-aoe-web-default-rtdb\\.firebaseio\\.com\\/posts\\.json"
+      ],
+      "strategy": "freshness",
+      "maxSize": 5,
+      "maxAge": 43200000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/4.7d7b76c9f2621b64c62e.js": "d8104972a7d493223dce2cf857bef9c5af9b4fee",
+    "/5.9a6191f1e642140a2f52.js": "2108ea628a7a2ddc9793366b63a9fcd584a749aa",
+    "/assets/InitialData.json": "1a43ecbe0ba7b2f216ec71a5fb392e69949ee325",
+    "/assets/images/aoe_background.jpg": "65bff4a76eee9b4f0fd038479d01f58a9a16eb5b",
+    "/assets/images/dbz_logo.png": "85a7f561647621fa9534d819c0c990ba50e9da7c",
+    "/assets/images/goku_jumbotrom.jpg": "ba0ce16929514350a9eefcee69ed393386479d8f",
+    "/assets/images/voobly_logo.jfif": "01e9c07eb07dd01fa359fad0cba49010286d1537",
+    "/favicon.ico": "b278028c28a395b4224493ed725e3be6e297bfc5",
+    "/index.html": "c4fde2de3fe6525296be8d2976ba10ad47136fb6",
+    "/main.91d3f73ff556fffe7d79.js": "48bea19c70617a7c9e8fb45ed609881e7660dc74",
+    "/manifest.webmanifest": "4d74e1d4343cfcec40b9efb844508db106936274",
+    "/polyfills.94daefd414b8355106ab.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
+    "/runtime.6db86d9e05ebd4dc1d3d.js": "a503a7f9f057947f748cc0f41a78ce0632005a3f",
+    "/scripts.53f75ab19ed1f427752e.js": "344ada7a6a5747edfab54ef8993ac24f52f8d038",
+    "/styles.6395b4fdd88fe6661137.css": "06172fdbedd71712193c4f0096d0255ed619b81c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
