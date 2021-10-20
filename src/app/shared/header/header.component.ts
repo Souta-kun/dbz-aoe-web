@@ -5,19 +5,18 @@ import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  sub:Subscription;
+  sub: Subscription;
   logged: boolean = false;
 
-  constructor(private authService: AuthService,
-              private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.sub = this.authService.user.subscribe(user => {
+    this.sub = this.authService.user.subscribe((user) => {
       this.logged = !!user;
-    })
+    });
   }
 
   onRedirect() {
@@ -29,10 +28,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onImg() {
-    this.router.navigate(['/home/news']);
+    this.router.navigate(['/news']);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 }
