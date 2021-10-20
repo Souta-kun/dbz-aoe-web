@@ -1,0 +1,97 @@
+<h3>Posts</h3>
+<hr />
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSave()" class="form">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <input
+            type="text"
+            formControlName="title"
+            maxlength="150"
+            placeholder="Titulo"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <textarea
+            type="text"
+            formControlName="message"
+            maxlength="500"
+            rows="5"
+            placeholder="Mensaje"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <input
+            type="text"
+            formControlName="urlImage"
+            maxlength="500"
+            placeholder="Url Imagen"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div>
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="form.invalid"
+          >
+            <strong>{{ isEdit ? "Actualizar" : "Crear" }}</strong>
+          </button>
+          <button
+            type="button"
+            (click)="onDelete()"
+            class="btn btn-outline-danger ml-1"
+            *ngIf="isEdit"
+          >
+            <strong>Eliminar</strong>
+          </button>
+          <button
+            type="button"
+            (click)="onReset()"
+            class="btn btn-primary ml-1"
+          >
+            <strong>Limpiar</strong>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr />
+<div class="card">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Titulo</th>
+          <th scope="col">Mensaje</th>
+          <th scope="col">Publicado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr (click)="onShow(post, i)" *ngFor="let post of posts; let i = index">
+          <td>
+            <p class="text-break">{{ post.title }}</p>
+          </td>
+          <td>
+            <p class="text-break">{{ post.message | slice: 0:35 }}</p>
+          </td>
+          <td>
+            <p class="text-break">{{ post.publicated | date }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|jfif)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "downloads",
+      "urls": [
+        "https://dbz-aoe-web-default-rtdb.firebaseio.com/downloads.json"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "12h",
+        "strategy": "freshness",
+        "timeout": "10s"
+      }
+    },
+    {
+      "name": "guides",
+      "urls": [
+        "https://dbz-aoe-web-default-rtdb.firebaseio.com/guides.json"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "12h",
+        "strategy": "freshness",
+        "timeout": "10s"
+      }
+    },
+    {
+      "name": "posts",
+      "urls": [
+        "https://dbz-aoe-web-default-rtdb.firebaseio.com/posts.json"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "12h",
+        "strategy": "freshness",
+        "timeout": "10s"
+      }
+    }
+  ]
+}
