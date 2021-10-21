@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthResponseData, AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.reducer';
+import { login } from '../store/actions';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
   error: string = null;
+  subs: Subscription;
   form: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private router: Router, private store: Store<AppState>) {
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.required,
@@ -28,28 +32,21 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subs = this.store.select('user').subscribe(({ error, logged }) => {
+      this.error = error;
+      if (logged) this.router.navigate(['/admon']);
+    });
+  }
+  ngOnDestroy() {
+    this.subs?.unsubscribe();
+  }
 
   onSubmit() {
     if (this.form.invalid) {
       return;
     }
-    const email = this.form.controls['email'].value;
-    const password = this.form.controls['password'].value;
-
-    let authObs: Observable<AuthResponseData>;
-
-    authObs = this.authService.login(email, password);
-
-    authObs.subscribe(
-      (response) => {
-        this.router.navigate(['/admon']);
-      },
-      (errorMessage) => {
-        this.error = errorMessage;
-      }
-    );
-
-    this.form.reset();
+    const { email, password } = this.form.value;
+    this.store.dispatch(login({ email: email, password: password }));
   }
 }

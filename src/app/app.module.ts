@@ -24,6 +24,8 @@ import { GuardInterceptor } from './auth/guard-interceptor';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { EffectsArray } from './store/effects';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { appReducer } from './store/app.reducer';
       enabled: environment.production,
     }),
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot(EffectsArray),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
