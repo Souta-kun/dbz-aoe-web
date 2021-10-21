@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
-  isLoading = false;
   error: string = null;
   form: FormGroup;
 
@@ -40,19 +39,14 @@ export class AuthComponent implements OnInit {
 
     let authObs: Observable<AuthResponseData>;
 
-    this.isLoading = true;
-
     authObs = this.authService.login(email, password);
-    console.log(email, password);
+
     authObs.subscribe(
       (response) => {
-        console.log(response);
-        this.isLoading = false;
         this.router.navigate(['/admon']);
       },
       (errorMessage) => {
         this.error = errorMessage;
-        this.isLoading = false;
       }
     );
 
