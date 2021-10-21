@@ -4,41 +4,36 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { User } from './user.model';
+import { User } from '../models/user.model';
 
 export interface AuthResponseData {
-  idToken: string,
-    email: string,
-    refreshToken: string,
-    expiresIn: string,
-    localId: string,
-    registered: boolean
+  idToken: string;
+  email: string;
+  refreshToken: string;
+  expiresIn: string;
+  localId: string;
+  registered: boolean;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
-        environment.apiAuthentication, 
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true
-        }
-      )
+      .post<AuthResponseData>(environment.apiAuthentication, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
         catchError(this.handleError),
-        tap(res => {
+        tap((res) => {
           this.handleAuthentication(
             res.email,
             res.localId,
@@ -51,17 +46,14 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
-        environment.apiAuthentication,
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true
-        }
-      )
+      .post<AuthResponseData>(environment.apiAuthentication, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
         catchError(this.handleError),
-        tap(res => {
+        tap((res) => {
           this.handleAuthentication(
             res.email,
             res.localId,
@@ -74,10 +66,10 @@ export class AuthService {
 
   autoLogin() {
     const userData: {
-      email: string,
-      id: string,
-      _token: string,
-      _tokenExpirationDate
+      email: string;
+      id: string;
+      _token: string;
+      _tokenExpirationDate;
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
@@ -92,7 +84,9 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
       this.autoLogout(expirationDuration);
     }
   }
@@ -128,19 +122,22 @@ export class AuthService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'An unknow error ocurred!'
+    let errorMessage = 'An unknow error ocurred!';
     if (!error.error || !error.error.error) {
       return throwError(errorMessage);
     }
     switch (error.error.error.message) {
       case 'EMAIL_NOT_FOUND':
-        errorMessage = 'There is no user record corresponding to this identifier. The user may have been delete.';
+        errorMessage =
+          'There is no user record corresponding to this identifier. The user may have been delete.';
         break;
       case 'INVALID_PASSWORD':
-        errorMessage = 'The password is invalid or the user does not have a password.';
+        errorMessage =
+          'The password is invalid or the user does not have a password.';
         break;
       case 'USER_DISABLED':
-        errorMessage = 'The user account has been disabled by an administrator.';
+        errorMessage =
+          'The user account has been disabled by an administrator.';
         break;
       case 'EMAIL_EXISTS':
         errorMessage = 'This email exist already';
