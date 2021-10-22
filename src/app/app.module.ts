@@ -9,15 +9,10 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './core/auth/auth.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { HomeComponent } from './modules/home/home.component';
-import { TitleComponent } from './modules/home/components/title/title.component';
-import { GuideComponent } from './modules/home/pages/guide/guide.component';
-import { DownloadComponent } from './modules/home/pages/download/download.component';
-import { NewsComponent } from './modules/home/pages/news/news.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AdministrationModule } from './modules/administration/administration.module';
-import { OrderModule } from 'ngx-order-pipe';
+import { HomeModule } from './modules/home/home.module';
 
 import { GuardInterceptor } from './core/auth/guard-interceptor';
 // NgRx
@@ -28,24 +23,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { EffectsArray } from './shared/store/effects';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    FooterComponent,
-    DownloadComponent,
-    GuideComponent,
-    NewsComponent,
-    TitleComponent,
-    AuthComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, AuthComponent],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    OrderModule,
+    HomeModule,
     AdministrationModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
