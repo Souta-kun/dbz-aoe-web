@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
-import { NewsComponent } from './components/home/news/news.component';
-import { GuideComponent } from './components/home/guide/guide.component';
-import { DownloadComponent } from './components/home/download/download.component';
-import { AuthComponent } from './auth/auth.component';
+import { HomeComponent } from './modules/home/home.component';
+import { NewsComponent } from './modules/home/pages/news/news.component';
+import { GuideComponent } from './modules/home/pages/guide/guide.component';
+import { DownloadComponent } from './modules/home/pages/download/download.component';
+import { AuthComponent } from './core/auth/auth.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/news', pathMatch: 'full' },
@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'admon',
     loadChildren: () =>
-      import('./components/administration/administration-routing.module').then(
+      import('./modules/administration/administration-routing.module').then(
         (mod) => mod.AdministrationRoutingModule
       ),
   },
