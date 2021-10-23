@@ -1,6 +1,15 @@
 # DbzAoe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1, Bootstrap 4.6 and Firebase.
+
+## Implementation
+
+Use of components, services, observables, modules, pipes, rxjs.
+
+This projects use:
+
+- LazyLoad
+- NgRx
 
 ## Development server
 
