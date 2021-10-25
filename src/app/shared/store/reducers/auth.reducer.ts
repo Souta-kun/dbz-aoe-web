@@ -17,17 +17,21 @@ export const initialState: State = {
 const _authReducer = createReducer(
   initialState,
   on(actions.login, (state) => ({ ...state })),
-  on(actions.loginSuccess, (state, { email, expiresIn, token, userId }) => ({
-    ...state,
-    user: new User(
-      email,
-      userId,
-      token,
-      new Date(new Date().getTime() + expiresIn * 1000)
-    ),
-    logged: true,
-    error: null,
-  })),
+  on(
+    actions.loginSuccess,
+    actions.browserReload,
+    (state, { email, expiresIn, token, userId }) => ({
+      ...state,
+      user: new User(
+        email,
+        userId,
+        token,
+        new Date(new Date().getTime() + expiresIn * 1000)
+      ),
+      logged: true,
+      error: null,
+    })
+  ),
   on(actions.loginFail, (state, { error }) => ({
     ...state,
     logged: false,

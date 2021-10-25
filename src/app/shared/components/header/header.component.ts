@@ -28,6 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.store.dispatch(logout());
+    localStorage.removeItem('userData');
+    this.onRedirect();
   }
 
   onImg() {

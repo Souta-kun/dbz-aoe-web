@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { Actions, ofType, createEffect, concatLatestFrom } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { login, loginFail, loginSuccess } from '../actions';
+import { login, loginFail, loginSuccess, logout } from '../actions';
 
 @Injectable()
 export class UsuariosEffect {
