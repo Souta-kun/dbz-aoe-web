@@ -6,16 +6,6 @@ export const login = createAction(
   props<{ email: string; password: string }>()
 );
 
-export const browserReload = createAction(
-  '[Auth Component] browserReload',
-  props<{
-    email: string;
-    userId: string;
-    token: string;
-    expiresIn: number;
-  }>()
-);
-
 export const loginSuccess = createAction(
   '[Auth Component] Log In Succes',
   props<{
@@ -32,3 +22,15 @@ export const loginFail = createAction(
 );
 
 export const logout = createAction('[Auth Component] Log Out');
+
+export const logoutSuccess = createAction('[Auth Component] Log Out Success');
+
+export const browserReload = createAction(
+  '[Auth Component] browserReload',
+  props<{
+    email: string;
+    userId: string;
+    token: string;
+    expiresIn: number;
+  }>()
+);

@@ -32,15 +32,15 @@ export class AuthService {
         returnSecureToken: true,
       })
       .pipe(
-        catchError(this.handleError),
-        tap((res) => {
-          this.handleAuthentication(
-            res.email,
-            res.localId,
-            res.idToken,
-            +res.expiresIn
-          );
-        })
+        catchError(this.handleError)
+        // tap((res) => {
+        //   this.handleAuthentication(
+        //     res.email,
+        //     res.localId,
+        //     res.idToken,
+        //     +res.expiresIn
+        //   );
+        // })
       );
   }
 
@@ -88,18 +88,18 @@ export class AuthService {
   //   }, expirationDuration);
   // }
 
-  private handleAuthentication(
-    email: string,
-    userId: string,
-    token: string,
-    expiresIn: number
-  ) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
-    // this.user.next(user);
-    // this.autoLogout(expiresIn * 1000);
-    localStorage.setItem('userData', JSON.stringify(user));
-  }
+  // private handleAuthentication(
+  //   email: string,
+  //   userId: string,
+  //   token: string,
+  //   expiresIn: number
+  // ) {
+  //   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+  //   const user = new User(email, userId, token, expirationDate);
+  //   this.user.next(user);
+  //   this.autoLogout(expiresIn * 1000);
+  //   localStorage.setItem('userData', JSON.stringify(user));
+  // }
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An unknow error ocurred!';
